@@ -1,0 +1,24 @@
+{
+  "name": "ttn_buzzz",
+  "version": "1.0.0",
+  "description": "A social media web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "-": "^0.0.1",
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "swagger-jsdoc": "5.0.1",
+    "swagger-ui-express": "^4.1.6"
+  }
+}
