@@ -1,0 +1,176 @@
+.profile-form {
+    box-sizing: border-box;
+  }
+
+
+  .update-card1 {
+      height: 800px;
+      padding: 0;
+  }
+  
+  .update-card2 {
+      width: 300px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .update-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  #update-pic1 {
+    width: 900px;
+    height: 200px;
+    background-repeat: no-repeat;
+  }
+  
+  #update-pic2 {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .update-cover-pic {
+    position: relative;
+  }
+  
+  .update-profile-pic {
+    position: absolute;
+    left: 65px;
+    top: 150px;
+  }
+
+  .edit-profile {
+      position: absolute;
+      left: 75px;
+      top: 75px;
+  }
+  
+  .save-btn {
+    background-color: #2b7fd3;
+    color: #fff;
+  }
+  
+  .reset-btn {
+   color: #2b7fd3;
+   background-color: #fff;
+    margin-left: 50px;
+    border: #2b7fd3 solid 1px;
+  }
+  
+  .save-btn:link {
+    background-color: #92afe0;
+    color: #fff;
+  }
+  
+  .save-btn:visited {
+    background-color: #92afe0;
+    color: #fff;
+  }
+  
+  .save-btn:hover {
+    background-color: #92afe0;
+    color: #fff;
+  }
+  
+  .save-btn:active {
+    background-color: #92afe0;
+    color: #fff;
+  }
+  
+  .reset-btn:link {
+    color: #92afe0;
+    background-color: #fff;
+  }
+  
+  .reset-btn:visited {
+   color: #92afe0;
+   background-color: #fff;
+  }
+  
+  .reset-btn:hover {
+    background-color: #92afe0;
+    color: #fff;
+  }
+  
+  .reset-btn:active {
+    color: #92afe0;
+    background-color: #fff;
+  }
+  
+  .update-profile {
+    position: absolute;
+    top: 300px;
+    left: 70px;
+  }
+  
+  .update-s-profile {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .update-suggestion-profile {
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px;
+  }
+  
+  .update-s-heading {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+    padding: 0 10px;
+  }
+  
+  .update-heading {
+    flex-grow: 2;
+  }
+  
+  .s-img {
+    flex-grow: 0.2;
+  }
+  
+  .s-name {
+    flex-grow: 1;
+    padding-top: 5px;
+  }
+  
+  .add {
+    padding-top: 5px;
+  }
+  
+  .add-friend:link {
+    color: #60acd1;
+  }
+  
+  .add-friend:visited {
+    color: #60acd1;
+  }
+  
+  .add-friend:hover {
+    color: #0072d0;
+  }
+  
+  .add-friend:active {
+    color: #60acd1;
+  }
+  
+  .material-icons {
+    cursor: pointer;
+  }
+  
+  .description {
+    word-spacing: 8px;
+  }
+
+  .e-profile {
+    cursor: pointer;
+    border: #0072d0 solid 1px;
+    border-radius: 25px;
+    padding: 8px;
+    background-color: #fff;
+  }

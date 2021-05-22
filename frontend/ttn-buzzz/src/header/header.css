@@ -1,0 +1,36 @@
+.logo {
+    height: 60px;
+    width: 70px;
+  pointer-events: none;
+  margin-left: 10px;
+
+}
+
+.navbar {
+    background-color: #fff;
+}
+
+.material-icons, .fab {
+    color: #000;
+}
+
+.p-name {
+    color: #000;
+    padding-right: 100px;
+    padding-left: 10px;
+}
+
+.header-profile {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.logout-btn {
+    background-color: #92afe0;
+}
+
+.logout-btn:hover {
+    background-color: #fff;
+    color: #92afe0;
+}

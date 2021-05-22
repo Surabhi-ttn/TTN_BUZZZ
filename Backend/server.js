@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const mongoose = require("mongoose");
-
+var cors = require("cors");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-
-const port = 3000;
+app.use(cors());
+const port = 9000;
 
 mongoose.connect("mongodb+srv://mongodb:mongodb@cluster0.msvlm.mongodb.net/TTN?retryWrites=true&w=majority", {
   useNewUrlParser: "true",

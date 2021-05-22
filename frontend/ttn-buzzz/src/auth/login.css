@@ -1,0 +1,83 @@
+.login-container {
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .App-logo {
+    height: 20vmin;
+    pointer-events: none;
+  }
+  
+  .google-btn{
+    background-color: #fff;
+    color: #e43b86;
+    border: #e43b86 solid 1px;
+    border-radius: 25px;
+    padding: 10px 20px;
+  }
+  
+  .google-btn:hover {
+    background-color: #e43b86;
+    color: #fff;
+  }
+  
+  .local-btn {
+    background-color: #9816f3;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 30px;
+  }
+  
+  .local-btn:hover {
+    background-color: #fff;
+    color: #9816f3;
+    border: #9816f3 solid 1px;
+  }
+  
+  .card {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 50px;
+    height: 500px;
+    width: 900px;
+    padding: 50px;
+  } 
+  
+  .forgetpass:link {
+    text-decoration: none;
+    color: #A0A0A0;
+  }
+  
+  .forgetpass:visited {
+    color: #A0A0A0;
+  }
+  
+  .forgetpass:hover {
+    color: #404040;
+  }
+  
+  .forgetpass:active {
+    color: #A0A0A0;
+  }
+  
+  .input-field {
+    margin-top: 1px;
+  }
+  
+  .optn2 {
+    margin-left: 70px;
+  }
+  
+  .btn2 {
+    margin-top: 50px;
+  }
+  
+  .options {
+    padding-top: 10px;
+  }
+  
+  h6 {
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
+  

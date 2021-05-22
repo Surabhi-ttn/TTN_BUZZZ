@@ -1,0 +1,155 @@
+.profile-container {
+  box-sizing: border-box;
+}
+
+.card2 {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+  justify-content: center;
+}
+
+#pic1 {
+  width: 800px;
+  height: 200px;
+  background-repeat: no-repeat;
+}
+
+#pic2 {
+  width: 100px;
+  height: 100px;
+}
+
+.cover-pic {
+  position: relative;
+}
+
+.profile-pic {
+  position: absolute;
+  left: 20px;
+  top: 150px;
+}
+
+#profile-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.add-friend-btn {
+  background-color: #2b7fd3;
+  color: #fff;
+}
+
+.website-btn {
+  background-color: #2b7fd3;
+  color: #fff;
+  margin-left: 50px;
+}
+
+.add-friend-btn:link {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.add-friend-btn:visited {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.add-friend-btn:hover {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.add-friend-btn:active {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.website-btn:link {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.website-btn:visited {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.website-btn:hover {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.website-btn:active {
+  background-color: #92afe0;
+  color: #fff;
+}
+
+.display-profile {
+  position: absolute;
+  top: 300px;
+  left: 70px;
+}
+
+.s-profile {
+  width: 40px;
+  height: 40px;
+}
+
+.suggestion-profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.s-heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.heading {
+  flex-grow: 2;
+}
+
+.s-img {
+  flex-grow: 0.2;
+}
+
+.s-name {
+  flex-grow: 1;
+  padding-top: 5px;
+}
+
+.add {
+  padding-top: 5px;
+}
+
+.add-friend:link {
+  color: #60acd1;
+}
+
+.add-friend:visited {
+  color: #60acd1;
+}
+
+.add-friend:hover {
+  color: #0072d0;
+}
+
+.add-friend:active {
+  color: #60acd1;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.description {
+  word-spacing: 8px;
+}

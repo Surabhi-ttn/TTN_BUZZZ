@@ -25,11 +25,14 @@ route.get('/showprofile', (req, res) => {
                     "last_name": profile.last_name,
                     "profile_pic": profile.profile_pic,
                     "designation": profile.designation,
+                    "gender": profile.gender,
+                    "date_of_birth": profile.date_of_birth,
                     "city": profile.city,
                     "state": profile.state,
+                    "pincode": profile.pincode,
                     "website": profile.website,
                     "cover_pic": profile.cover_pic,
-                    "friend_count": profile.friends
+                    "friends": profile.friends
                 })
             }
         
