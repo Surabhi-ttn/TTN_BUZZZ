@@ -57,4 +57,14 @@ route.get(
   }
 );
 
+route.get('/current_user',(req,res) => {
+  console.log(req.user)
+  res.send(req.user)
+})
+
+route.get('/logout',(req,res)=>{
+  req.logout();
+  res.redirect('/')
+})
+
 module.exports = route;
