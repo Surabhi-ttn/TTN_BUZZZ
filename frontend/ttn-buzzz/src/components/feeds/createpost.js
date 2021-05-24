@@ -1,8 +1,8 @@
 import React from "react";
 import "./createpost.css";
 
-class CreatePost extends React.Component {
-  render() {
+const CreatePost = () => {
+  
     return (
       <div className="createpost-container">
         <div className="card createpost-card">
@@ -39,6 +39,5 @@ class CreatePost extends React.Component {
       </div>
     );
   }
-}
 
 export default CreatePost;

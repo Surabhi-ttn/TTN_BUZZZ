@@ -25,20 +25,12 @@ passport.use(
       clientID:
         "284566297204-he05m42igl10jv2euiqpcb4o954u4qq0.apps.googleusercontent.com",
       clientSecret: "QVPP9b7Or7cKmUxhUssezPxr",
-      callbackURL: "http://localhost:3000/auth/login/callback",
+      callbackURL: "http://localhost:9000/auth/login/callback",
     },
     function (accessToken, refreshToken, profile, done) {
       updateUser(profile, (updatedprofile) => {
              return done(null, updatedprofile);
            });
-      // if(!profile.emails[0].value.includes('tothenew.com')) {
-      //   return done(null, profile);
-      // }
-      // else {
-      //   updateUser(profile, (updatedprofile) => {
-      //     return done(null, updatedprofile);
-      //   });
-      // }
     }
   )
 );
@@ -55,27 +47,13 @@ route.get(
 route.get(
   "/login/callback",
   passport.authenticate("google", {
-    failureRedirect: "localhost:3000/auth/login/" }),
+    failureRedirect: "localhost:9000/auth/login/" }),
   function (req, res) {
     res.send({
           "status": 200,
           "message": "successful login",
           "profile": req.user
         })
-    // if(!req.user.is_admin) {
-    //   res.send({
-    //     "status": 200,
-    //     "message": "login failed"
-    //   })
-    // }
-    // else {
-    //   res.send({
-    //     "status": 200,
-    //     "message": "successful login",
-    //     "profile": req.user
-    //   })
-    // }
-    //res.redirect("/");
   }
 );
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import "./App.css";
-import UpdateProfile from './profile/updateprofile';
+import Header from './components/header/header';
 
 class App extends React.Component {
   
   render() {
     return(
       <div className="App">
-        <UpdateProfile/>
+        <Header/>
       </div>
     );
   }

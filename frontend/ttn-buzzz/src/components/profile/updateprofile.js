@@ -77,7 +77,7 @@ class UpdateProfile extends React.Component {
       gender: gender,
       designation: designation,
     });
-    
+    console.log(this.state)
   }
 
   handleSubmit() {
@@ -175,18 +175,17 @@ class UpdateProfile extends React.Component {
                       <select
                         id="designation"
                         placeholder=""
-                        value={this.state.designation}
+                       value={this.state.designation}
                         onChange={this.handleChange}
                       >
-                        <option value="" disabled selected>
-                          Choose your option
+                        <option value="" disabled selected>Choose Your Option
                         </option>
-                        <option value="ceo">CEO</option>
+                        <option value="ceo">ceo</option>
                         <option value="software engineer">
-                          Software Engineer
+                          software engineer
                         </option>
-                        <option value="manager">Manager</option>
-                        <option value="trainee">Trainee</option>
+                        <option value="manager">manager</option>
+                        <option value="trainee">trainee</option>
                       </select>
                     </div>
                     <div className="input-field col">
@@ -214,13 +213,13 @@ class UpdateProfile extends React.Component {
                         <option value="" disabled selected>
                           Choose your option
                         </option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
                       </select>
                     </div>
                     <div className="input-field col">
                       <input
-                        id="dob"
+                        id="date_of_birth"
                         type="date"
                         placeholder=""
                         value={this.state.date_of_birth}

@@ -106,7 +106,7 @@ route.get('/contactlist', (req, res) => {
         res.send({
             "status": 200,
             "message": "get contactlist successfully",
-            "suggestionlist": users
+            "contactlist": users
         });
     });
 });

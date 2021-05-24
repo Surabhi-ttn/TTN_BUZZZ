@@ -14,6 +14,7 @@
     border: #e43b86 solid 1px;
     border-radius: 25px;
     padding: 10px 20px;
+    cursor: pointer;
   }
   
   .google-btn:hover {

@@ -2,24 +2,8 @@ import React from 'react';
 import "./login.css";
 import logo from "./logo.jpeg";
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state= {loginresponse:{}}
-  }
-   login = () => {
-    fetch("http://localhost:9000/auth/login", {
-    method: "POST",
-    body: JSON.stringify(),
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-})
-.then(response => response.json())
-.then(response => this.setState({loginresponse:response}));
-}
+const Login = () => {
   
-  render() {
   return (
     <div className="login-container">
       <div class="row container">
@@ -31,7 +15,7 @@ class Login extends React.Component {
               <br /> your journey with us
             </h5>
             <h6>Don't sleep until you're proud.</h6>
-            <a class="google-btn" onclick="this.login()">
+            <a href="http://localhost:9000/auth/login" class="google-btn" >
               Sign In with Google
             </a>
           </div>
@@ -72,7 +56,7 @@ class Login extends React.Component {
       </div>
     </div>
   );
-}
+
 }
 
 export default Login;

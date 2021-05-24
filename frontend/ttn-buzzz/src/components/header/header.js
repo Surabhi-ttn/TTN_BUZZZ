@@ -3,8 +3,21 @@ import logo from "../auth/logo.jpeg";
 import profile from "../profile/surabhi.jpg";
 import "./header.css";
 
-class Header extends React.Component {
-  render() {
+const Header = () => {
+
+
+  // handleContactList() {
+  //   var requestOptions = {
+  //     method: 'GET',
+  //     redirect: 'follow'
+  //   };
+    
+  //   fetch("http://localhost:9000/user/contactlist?user_id=ankitpahwa111@gmail.com", requestOptions)
+  //     .then(response => response.text())
+  //     .then(result => console.log(result))
+  //     .catch(error => console.log('error', error));
+  // }
+
     return (
       <div className="header navbar-fixed">
         <nav className="navbar">
@@ -41,6 +54,5 @@ class Header extends React.Component {
       </div>
     );
   }
-}
 
 export default Header;

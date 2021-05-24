@@ -111,7 +111,13 @@ function contactlist(user_id, cb) {
   userModel.find({ user_id: user_id }, function (err, data) {
     if (data) {
       data = data[0].friends;
-      cb(data);
+      data.forEach(contactlist => {
+        userModel.find({user_id:contactlist}, function(err, profile) {
+          if(profile) {
+            cb(profile)
+          }
+        })
+      })
     } else {
       cb(null);
     }

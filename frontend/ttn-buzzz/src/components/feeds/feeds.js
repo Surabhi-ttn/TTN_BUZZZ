@@ -5,8 +5,7 @@ import profile from "../profile/surabhi.jpg";
 import Header from "../header/header";
 import CreatePost from "./createpost";
 
-class Feeds extends React.Component {
-  render() {
+const Feeds = () => {
     return (
       <div className="feeds-container">
         <Header />
@@ -161,7 +160,6 @@ class Feeds extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
 export default Feeds;
