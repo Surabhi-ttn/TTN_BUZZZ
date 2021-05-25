@@ -3,7 +3,7 @@ import "./feeds.css";
 import banner from "./bg.jpg";
 import profile from "../profile/surabhi.jpg";
 import Header from "../header/header";
-import CreatePost from "./createpost";
+import Post from "./post";
 
 const Feeds = () => {
     return (
@@ -36,7 +36,7 @@ const Feeds = () => {
 
             <div className="row">
               <div className="card card2">
-                <div className="row">
+                <div className="recent">
                   <span>Recent</span>
                   <ul className="list">
                     <li>
@@ -56,7 +56,7 @@ const Feeds = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="row">
+                <div className="group">
                   <span> Groups</span>
                   <ul className="list">
                     <li>
@@ -76,7 +76,7 @@ const Feeds = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="row">
+                <div className="subscription">
                   <span> Subscriptions</span>
                   <ul>
                     <li>
@@ -94,7 +94,7 @@ const Feeds = () => {
                       </a>
                     </li>
                   </ul>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -112,39 +112,55 @@ const Feeds = () => {
                 </div>
               </div>
             </div>
-            <div className="row"></div>
+            <div className="row">
+              <Post/>
+            </div>
           </div>
           <div className="col">
             <div className="row">
               <div className="card card4">
-                <div className="row s-heading">
+                <div className="s-heading">
                   <div className="heading">Contacts</div>
                   <div>
                     <i className="material-icons">search</i>
                   </div>
                 </div>
-                <div className="row">
+                
                   <div className="suggestion-profile">
                     <div className="s-img">
-                      <img src="" className="circle s-profile" />
+                      <img src={profile} className="circle s-profile" />
                     </div>
-                    <div className="s-name">Name</div>
+                    <div className="s-name">Name</div>    
                   </div>
-                </div>
+
+                  <div className="suggestion-profile">
+                    <div className="s-img">
+                      <img src={profile} className="circle s-profile" />
+                    </div>
+                    <div className="s-name">Name</div>    
+                  </div>
+
+                  <div className="suggestion-profile">
+                    <div className="s-img">
+                      <img src={profile} className="circle s-profile" />
+                    </div>
+                    <div className="s-name">Name</div>    
+                  </div>
+                
               </div>
             </div>
             <div className="row">
               <div className="card card4">
-                <div className="row s-heading">
+                <div className="s-heading">
                   <div className="heading">Suggestions</div>
                   <div>
                     <i className="material-icons">search</i>
                   </div>
                 </div>
-                <div className="row">
+                
                   <div className="suggestion-profile">
                     <div className="s-img">
-                      <img src="" className="circle s-profile" />
+                      <img src={profile} className="circle s-profile" />
                     </div>
                     <div className="s-name">Name</div>
                     <div className="add">
@@ -153,7 +169,7 @@ const Feeds = () => {
                       </a>
                     </div>
                   </div>
-                </div>
+                
               </div>
             </div>
           </div>

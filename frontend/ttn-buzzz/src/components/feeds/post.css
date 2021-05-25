@@ -1,0 +1,122 @@
+.post-container {
+    box-sizing: border-box;
+    margin: auto;
+    padding: auto;
+}
+
+.card {
+    margin: 12px;
+}
+
+.card-div {
+    width: 600px;
+    height: 700px;
+}
+
+.post-detail {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    border-bottom: #000 solid 1px;
+}
+
+.post-user {
+    margin-left: 50px;
+    flex-grow: 0.1;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0.8;
+}
+
+.post-caption {
+    width: 500px;
+    height: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.post-image {
+    width: 500px;
+    height: 300px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.post-img {
+    width: 500px;
+    height: 300px;
+}
+
+.reactions-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 5px;
+}
+
+.likes {
+    color: #1070dd;
+}
+
+.dislikes {
+    color: #e5234d;
+}
+
+.like-count {
+    flex-grow: 0.1;
+}
+
+.dislike-count {
+    flex-grow: 0.5;
+}
+
+.post-reactions {
+    width: 500px;
+    height: 50px;
+    border-top: #000 solid 1px;
+    border-bottom: #000 solid 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.like , .dislike , .comment {
+    cursor: pointer;
+}
+
+.post-comment {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.picture {
+    height: 45px;
+    width: 45px;
+}
+
+.profile-img {
+    padding: 10px 10px 10px 30px;
+    width: 80px;
+}
+
+.comment-area {
+    cursor: pointer;
+    height: 50px;
+    width: 400px;
+    background-color: #f0f2f5;
+    border: #f0f2f5 solid 1px;
+    border-radius: 25px;
+    margin-top: 10px;
+  }
+
+  

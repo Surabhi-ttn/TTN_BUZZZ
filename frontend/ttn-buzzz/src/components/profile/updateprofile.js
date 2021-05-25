@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import {updateProfile} from '../../actions/action'
 import "./updateprofile.css";
 import cover from "./cover.jpeg";
 import profile from "./surabhi.jpg";
@@ -36,7 +38,7 @@ class UpdateProfile extends React.Component {
     };
 
     fetch(
-      "http://localhost:9000/user/showprofile?user_id=surabhi.chaurasia@tothenew.com",
+      `http://localhost:9000/user/showprofile?user_id=${this.props.user.user_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -55,7 +57,6 @@ class UpdateProfile extends React.Component {
           "state": result.state,
           "pincode": result.pincode,
         });
-        console.log(this.state);
       })
       .catch((error) => console.log("error", error))
   }
@@ -85,7 +86,7 @@ class UpdateProfile extends React.Component {
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
     var urlencoded = new URLSearchParams();
-    urlencoded.append("user_id", "surabhi.chaurasia@tothenew.com");
+    urlencoded.append("user_id", this.props.user.user_id);
     urlencoded.append("first_name", this.state.first_name);
     urlencoded.append("last_name", this.state.last_name);
     urlencoded.append("profile_pic", this.state.profile_pic);
@@ -122,7 +123,8 @@ class UpdateProfile extends React.Component {
           "state": result.state,
           "pincode": result.pincode,
         });
-        console.log(this.state);
+        console.log(this.props);
+        this.props.updateProfile(result.data[0])
       })
       .catch((error) => console.log("error", error));
   }
@@ -303,4 +305,18 @@ class UpdateProfile extends React.Component {
   }
 }
 
-export default UpdateProfile;
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+   user: state.profile || {}
+  }
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      updateProfile: (updatedprofile) => dispatch((updateProfile(updatedprofile)))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(UpdateProfile);

@@ -16,7 +16,10 @@ function editprofile(updateprofilefields, cb) {
     updateprofilefields,
     function (err, data) {
       if (err) throw err;
-      cb(data);
+      userModel.find({ user_id: updateprofilefields.user_id }, function (err, profile) {
+        if (err) throw err;
+        cb(profile);
+      });
     }
   );
 }

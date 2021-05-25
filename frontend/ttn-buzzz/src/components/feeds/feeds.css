@@ -51,6 +51,11 @@
     border-right: grey solid 1px;
 }
 
+.recent, .group, .subscription {
+  margin-left: 30px;
+    margin-right: 30px;
+}
+
 .name {
   font-weight: bold;
   font-size: 18px;
@@ -61,6 +66,7 @@
   height: 600px;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
 }
 
 .s-profile {
@@ -71,11 +77,15 @@
 .suggestion-profile {
   display: flex;
   flex-direction: row;
+  margin-left: 30px;
+    margin-right: 30px;
 }
 
 .s-heading {
   display: flex;
   flex-direction: row;
+  margin-left: 30px;
+    margin-right: 30px;
 }
 
 .heading {
@@ -136,6 +146,7 @@ li:last-child {
     height: 400px;
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
   }
 
 .create-post {

@@ -1,25 +1,23 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import {BrowserRouter,Route} from 'react-router-dom';
-import Login from './components/auth/login';
-import {connect} from 'react-redux'
-import {fetchUserAction} from './actions/action'
+import {BrowserRouter,Route, Switch} from 'react-router-dom';
+import Feeds from './components/feeds/feeds'
+import Profile from './components/profile/profile'
+import UpdateProfile from './components/profile/updateprofile'
 
 function App(props) {
-  useEffect(()=>{
-     props.fetch_user()
-  },[])
+  
   return (
    <BrowserRouter>
-     <Login/>
+     <Switch>
+            <Route exact path='/' component={Feeds}></Route>
+           {/* <Route exact path='/login' component={Signin}></Route> */}
+            <Route exact path='/viewprofile' component={Profile}></Route>
+            <Route exact path='/updateprofile' component={UpdateProfile}></Route>
+          </Switch>
    </BrowserRouter>
   );
 }
 
-const mapDispathToProps = (dispatch)=>{
-  return {
-    fetch_user:()=>{dispatch(fetchUserAction())}
-  }
-}
 
-export default connect(null,mapDispathToProps)(App);
+export default App;

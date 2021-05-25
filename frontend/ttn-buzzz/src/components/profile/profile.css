@@ -2,10 +2,15 @@
   box-sizing: border-box;
 }
 
-.card2 {
+.card11 {
+  height: 500px;
+}
+
+.card22 {
     width: 300px;
     display: flex;
     flex-direction: column;
+    height: 500px;
 }
 
 .container {
@@ -67,6 +72,10 @@
   color: #fff;
 }
 
+.icon {
+  color: #fff;
+}
+
 .add-friend-btn:active {
   background-color: #92afe0;
   color: #fff;
@@ -98,35 +107,40 @@
   left: 70px;
 }
 
-.s-profile {
+.userprofile {
   width: 40px;
   height: 40px;
 }
 
-.suggestion-profile {
+.suggestion-userprofile {
   display: flex;
   flex-direction: row;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.s-heading {
+.profile-heading {
   display: flex;
   flex-direction: row;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 20px;
 }
 
-.heading {
+.profile-suggestion-heading {
   flex-grow: 2;
 }
 
-.s-img {
+.suggestion-img {
   flex-grow: 0.2;
 }
 
-.s-name {
+.suggestion-name {
   flex-grow: 1;
   padding-top: 5px;
 }
 
-.add {
+.s-add {
   padding-top: 5px;
 }
 
@@ -134,15 +148,15 @@
   color: #60acd1;
 }
 
-.add-friend:visited {
+.add-userfriend:visited {
   color: #60acd1;
 }
 
-.add-friend:hover {
+.add-userfriend:hover {
   color: #0072d0;
 }
 
-.add-friend:active {
+.add-userfriend:active {
   color: #60acd1;
 }
 

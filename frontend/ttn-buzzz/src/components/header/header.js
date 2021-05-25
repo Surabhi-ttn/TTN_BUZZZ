@@ -35,12 +35,12 @@ const Header = () => {
               
               <li>
                 <a href="#">
-                  <i className="fab fa-facebook-messenger circle"></i>
+                  <i className="fab fa-facebook-messenger circle notification-icon"></i>
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i className="material-icons circle">person</i>
+                  <i className="material-icons circle notification-icon">person</i>
                 </a>
               </li>
               <li>
