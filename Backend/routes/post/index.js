@@ -1,6 +1,6 @@
 const { Router } = require('express');
 var bodyParser=require("body-parser");
-const {getpost, createpost , editpost, deletepost , reportpost, approvereportedpost} = require('../../controllers/post_controller')
+const {getpost, getposts, createpost , editpost, deletepost , reportpost, approvereportedpost} = require('../../controllers/post_controller')
 const route = Router();
 
 route.use(bodyParser.json());
@@ -28,24 +28,25 @@ route.get('/getpost', (req, res) => {
     })
 })
 
-// route.get('/getposts', (req, res) => {
-//     let {user_id} = req.query
-//     getposts(user_id, function (posts) {
-//         if (!posts) {
-//             res.send({
-//                 "status": 200,
-//                 "message": "posts not found"
-//             })
-//         }
-//         else {
-//             res.send({
-//                 "status": 200,
-//                 "message": "posts found",
-//                 "posts": posts
-//             })
-//         }
-//     })
-// })
+route.get('/getposts', (req, res) => {
+    let {user_id} = req.query
+    console.log(user_id)
+    getposts(user_id, function (posts) {
+        if (!posts) {
+            res.send({
+                "status": 200,
+                "message": "posts not found"
+            })
+        }
+        else {
+            res.send({
+                "status": 200,
+                "message": "posts found",
+                "posts": posts
+            })
+        }
+    })
+})
 
 route.post('/createpost', (req, res) => {
     let {user_id, images, caption} = req.body;

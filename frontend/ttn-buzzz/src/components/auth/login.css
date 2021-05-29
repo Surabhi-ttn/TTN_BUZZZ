@@ -35,7 +35,7 @@
     border: #9816f3 solid 1px;
   }
   
-  .card {
+  .login-card {
     display: grid;
     grid-template-columns: auto auto;
     grid-column-gap: 50px;

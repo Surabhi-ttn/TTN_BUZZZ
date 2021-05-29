@@ -103,7 +103,14 @@ function getpendingrequest(user_id, cb) {
   userModel.find({ user_id: user_id }, function (err, data) {
     if (data) {
       data = data[0].friend_request;
-      cb(data);
+      data.forEach(pendingrequest => {
+        userModel.find({user_id: pendingrequest}, function(err, list){
+          if(list) {
+            cb(list)
+          }
+        })
+      })
+    
     } else {
       cb(null);
     }

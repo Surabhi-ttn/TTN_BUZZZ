@@ -34,3 +34,34 @@
     background-color: #fff;
     color: #92afe0;
 }
+
+.friend-profile {
+    color: #000;
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .f-profile {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+  }  
+
+  .friend-img {
+    flex-grow: 0.1;
+  }
+
+  .f-name {
+    flex-grow: 0.2;
+    cursor: pointer;
+  }
+
+  .accept-reject {
+    padding-top: 5px;
+  }
+
+  .request-modal {
+      width: 600px;
+  }

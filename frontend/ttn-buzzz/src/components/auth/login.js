@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="row container">
-        <div className="card">
+        <div className="card login-card">
           <div className="col">
             <img src={logo} className="App-logo" alt="logo" />
             <h5>
@@ -40,7 +40,7 @@ const Login = () => {
               </div>
               <div className="col">
                 <span className="optn2">
-                  <a className="forgetpass" href="#" target="_blank">
+                  <a href="#" className="forgetpass" target="_blank">
                     Forgot Password?
                   </a>
                 </span>

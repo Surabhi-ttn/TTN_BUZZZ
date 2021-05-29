@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from 'react-redux';
 import {updateProfile} from '../../actions/action'
 import "./updateprofile.css";
 import cover from "./cover.jpeg";
 import profile from "./surabhi.jpg";
 import Header from "../header/header";
-import M from "materialize-css";
-import $ from "jquery";
 
 class UpdateProfile extends React.Component {
   constructor() {
@@ -24,11 +22,18 @@ class UpdateProfile extends React.Component {
       "city": "",
       "state": "",
       "pincode": "",
+      suggestionlist: []
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  redirectToProfile(user_id) {
+    console.log(user_id)
+     this.props.history.push(`/viewprofile/${user_id}`)
+  }
+
   componentDidMount() {
     window.$("select").formSelect();
     
@@ -59,6 +64,16 @@ class UpdateProfile extends React.Component {
         });
       })
       .catch((error) => console.log("error", error))
+
+      fetch(`http://localhost:9000/user/suggestionlist?user_id=${this.props.user.user_id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+        ...this.state,
+        suggestionlist: result.suggestionlist
+      })
+    })
+      .catch(error => console.log('error', error));
   }
 
   handleChange(e) {
@@ -286,17 +301,21 @@ class UpdateProfile extends React.Component {
                 </div>
               </div>
 
-              <div className="row update-suggestion-profile">
+             { this.state.suggestionlist.map(user => {
+                return (
+                  <div className="row update-suggestion-profile" onClick={(e) => this.redirectToProfile(user.user_id)}>
                 <div className="col s-img">
-                  <img src={profile} className="circle update-s-profile" />
+                  <img src={user.profile_pic} className="circle update-s-profile" alt="s-img"/>
                 </div>
-                <div className="col s-name">Name</div>
+                <div className="col s-name">{user.first_name + " " + user.last_name}</div>
                 <div className="col add">
                   <a className="add-friend" href="#">
                     +Friend
                   </a>
                 </div>
               </div>
+                )
+              })}
             </div>
           </div>
         </div>

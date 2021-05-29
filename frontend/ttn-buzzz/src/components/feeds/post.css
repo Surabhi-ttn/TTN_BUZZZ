@@ -4,20 +4,19 @@
     padding: auto;
 }
 
-.card {
+.card-div {
+    width: 600px !important;
+    height: 700px !important;
     margin: 12px;
 }
 
-.card-div {
-    width: 600px;
-    height: 700px;
-}
-
 .post-detail {
-    display: flex;
-    flex-direction: row;
-    padding-top: 10px;
-    border-bottom: #000 solid 1px;
+    height: 50px;
+    display: flex !important;
+    flex-direction: row !important;
+    padding-top: 10px !important;
+    border-bottom: #000 solid 1px !important;
+    padding-bottom: 50px;
 }
 
 .post-user {
@@ -36,6 +35,7 @@
     height: 100px;
     margin-left: 50px;
     margin-right: 50px;
+    margin-top: 20px;
 }
 
 .post-image {
@@ -51,9 +51,9 @@
 }
 
 .reactions-count {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !;
     margin-left: 50px;
     margin-right: 50px;
     padding: 5px;
@@ -72,11 +72,12 @@
 }
 
 .dislike-count {
-    flex-grow: 0.5;
+    flex-grow: 1;
 }
 
 .post-reactions {
     width: 500px;
+    height: 50px;
     height: 50px;
     border-top: #000 solid 1px;
     border-bottom: #000 solid 1px;
@@ -97,6 +98,7 @@
     flex-direction: row;
     margin-left: 50px;
     margin-right: 50px;
+    margin-top: 30px;
 }
 
 .picture {
@@ -119,4 +121,7 @@
     margin-top: 10px;
   }
 
-  
+  /* .dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+ } */

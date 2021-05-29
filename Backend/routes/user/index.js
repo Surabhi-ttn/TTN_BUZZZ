@@ -95,7 +95,7 @@ route.get('/getpendingrequest', (req, res) => {
         res.send({
             "status": 200,
             "message": "get pending request successfully",
-            "Pending friend request": users
+            "pendingfriendrequest": users
         });
     });
 })

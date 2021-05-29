@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./profile.css";
+import { connect } from 'react-redux';
 import cover from "./cover.jpeg";
 import profile from "./surabhi.jpg";
 import Header from '../header/header';
@@ -9,9 +10,14 @@ class Profile extends Component {
     super()
     this.state = {
       displayprofile: {},
+      suggestionlist: []
     }
   }
   
+  redirectToProfile(user_id) {
+    console.log(user_id)
+     this.props.history.push(`/viewprofile/${user_id}`)
+  }
 
   componentDidMount() {
     var requestOptions = {
@@ -20,7 +26,7 @@ class Profile extends Component {
     };
 
     fetch(
-      "http://localhost:9000/user/showprofile?user_id=surabhi.chaurasia@tothenew.com",
+      `http://localhost:9000/user/showprofile?user_id=${this.props.match.params.user_id}`,
       requestOptions
     )
       .then((response) => response.json())
@@ -31,6 +37,16 @@ class Profile extends Component {
       }); console.log(this.state)
     })
       .catch((error) => console.log("error", error));
+
+      fetch(`http://localhost:9000/user/suggestionlist?user_id=${this.props.user.user_id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+        ...this.state,
+        suggestionlist: result.suggestionlist
+      })
+    })
+      .catch(error => console.log('error', error));
 
   }
 
@@ -47,7 +63,7 @@ class Profile extends Component {
                 <div className="cover-pic">
                   <img id="pic1" src={cover} alt="cover pic" />
                   <div className="profile-pic">
-                    <img id="pic2" src={profile} alt="profile pic" />
+                    <img id="pic2" src={this.state.displayprofile.profile_pic} alt="profile pic" />
                   </div>
                 </div>
               </div>
@@ -77,15 +93,20 @@ class Profile extends Component {
               <div><i className="material-icons">search</i></div>
               </div>
               
-              <div className="suggestion-userprofile">
+              {this.state.suggestionlist.map(user => {
+                return (
+                  <div className="suggestion-userprofile" onClick={(e) => this.redirectToProfile(user.user_id)}>
                 <div className="suggestion-img">
-                  <img src={profile} className="circle userprofile" />
+                  <img src={user.profile_pic} className="circle userprofile" alt="suggestion-image"/>
                 </div>
-                <div className="suggestion-name">Name</div>
+                <div className="suggestion-name">{user.first_name + " " + user.last_name}</div>
                 <div className="s-add">
                   <a className="add-userfriend" href="#">+Friend</a>
                 </div>
               </div>
+                )
+              })}
+              
               
             </div>
           </div>
@@ -96,4 +117,10 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    user: state.profile || {}
+  }
+}
+
+export default connect(mapStateToProps)(Profile);

@@ -10,26 +10,33 @@ function getpost(post_id, cb) {
   });
 }
 
-// async function getposts(user_id, cb) {
-//   let globalposts = []
-//   let user = await userModel.findOne({"user_id": user_id})
-//   if(user) {
-//     user.friends.forEach(friend => {
-//       let posts = await postModel.find({"user_id": friend})
-//       posts.forEach(post => globalposts.push(post))
-//     })
-//     globalposts.sort(function(first, second) {
-//       if(first.created_at <= second.created_at) {
-//         return 1;
-//       }
-//       else {
-//         return -1;
-//       }
-//     })
-//     cb(globalposts);
-//   }
+async function getposts(user_id, cb) {
+  let globalposts = []
+  let user = await userModel.findOne({"user_id": user_id})
+  if(!user) {
+    cb(globalposts);
+    return;
+  }
+  let posts = await postModel.find({})
+  console.log("post",posts)
+  posts.forEach(post => {
+    if (user.friends.includes(post.user_id)) {
+      globalposts.push(post)
+    }
+  })
+  console.log("globalposts", globalposts)
+    globalposts.sort(function(first, second) {
+      if(first.created_at <= second.created_at) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    })
+    cb(globalposts);
+  
 
-// }
+}
 
 function createpost(postdata, cb) {
   postModel.create(
@@ -108,6 +115,7 @@ function approvereportedpost(postdata, cb) {
 
 module.exports = {
   getpost,
+  getposts,
   createpost,
   editpost,
   deletepost,
@@ -130,3 +138,26 @@ module.exports = {
 // console.log("3 " , globalposts)
       
 //       console.log("4 " , globalposts)
+
+
+
+
+
+// let globalposts = []
+//   let user = await userModel.findOne({"user_id": user_id})
+//   if(user) {
+//     console.log(user.friends)
+//     user.friends.forEach(friend => {
+//       let posts = postModel.find({"user_id": friend})
+//       posts.forEach(post => globalposts.push(post))
+//     })
+//     globalposts.sort(function(first, second) {
+//       if(first.created_at <= second.created_at) {
+//         return 1;
+//       }
+//       else {
+//         return -1;
+//       }
+//     })
+//     cb(globalposts);
+//   }
