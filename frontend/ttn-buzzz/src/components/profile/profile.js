@@ -15,7 +15,6 @@ class Profile extends Component {
   }
   
   redirectToProfile(user_id) {
-    console.log(user_id)
      this.props.history.push(`/viewprofile/${user_id}`)
   }
 
@@ -34,7 +33,7 @@ class Profile extends Component {
         this.setState({
         ...this.state,
         displayprofile:result
-      }); console.log(this.state)
+      }); 
     })
       .catch((error) => console.log("error", error));
 

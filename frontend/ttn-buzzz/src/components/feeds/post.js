@@ -1,6 +1,7 @@
 import React from 'react';
 import './post.css';
 import profile from '../profile/surabhi.jpg';
+import {connect} from 'react-redux';
 import M from 'materialize-css';
 import $ from 'jquery';
 
@@ -8,10 +9,62 @@ class Post extends React.Component{
   constructor(){
     super()
     this.state = {
-      posts : []
+      likedpost : [],
     }
   }
   
+
+  handlePostLike (post_id) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("post_id", post_id);
+    urlencoded.append("user_id", this.props.user.user_id);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:9000/reaction/like", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          ...this.state,
+          likedpost: [result.data]
+        })
+      })
+      .catch(error => console.log('error', error));
+  }
+
+  handlePostComment(post_id, comment) {
+    console.log(post_id, comment)
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("post_id", post_id);
+    urlencoded.append("user_id", this.props.user.user_id);
+    urlencoded.append("comment_description", comment);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:9000/reaction/comment", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result.message);
+      })
+      .catch(error => console.log('error', error));
+  }
+
     render() {
     return (
         this.props.posts.map(post => {
@@ -48,7 +101,7 @@ class Post extends React.Component{
                 </div>
             </div>
             <div className="post-reactions">
-                <div className="like">
+                <div className="like" onClick={(e) => this.handlePostLike(post._id)}>
                 <i class="far fa-thumbs-up"></i>Like
                 </div>
                 <div className="dislike"> 
@@ -65,10 +118,12 @@ class Post extends React.Component{
         
         <div className="input-field comment-area">
           <textarea
+            ref="postcomment"
             id="textarea"
             className="materialize-textarea"
           ></textarea>
           <label for="textarea">Write a Comment...</label>
+          <button onClick={(e) => this.handlePostComment(post._id, this.refs.postcomment.value)}>send</button>
         </div>
       
         </div>
@@ -80,4 +135,10 @@ class Post extends React.Component{
       }
 }
 
-export default Post;
+const mapStateToProps = (state) => {
+  return {
+    user: state.profile || {}
+  }
+}
+
+export default connect(mapStateToProps)(Post);

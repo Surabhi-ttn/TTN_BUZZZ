@@ -30,7 +30,6 @@ class UpdateProfile extends React.Component {
   }
 
   redirectToProfile(user_id) {
-    console.log(user_id)
      this.props.history.push(`/viewprofile/${user_id}`)
   }
 
@@ -77,7 +76,6 @@ class UpdateProfile extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e);
     this.setState({
       [e.target.id]: e.target.value,
     });
@@ -93,7 +91,6 @@ class UpdateProfile extends React.Component {
       gender: gender,
       designation: designation,
     });
-    console.log(this.state)
   }
 
   handleSubmit() {
@@ -138,7 +135,6 @@ class UpdateProfile extends React.Component {
           "state": result.state,
           "pincode": result.pincode,
         });
-        console.log(this.props);
         this.props.updateProfile(result.data[0])
       })
       .catch((error) => console.log("error", error));

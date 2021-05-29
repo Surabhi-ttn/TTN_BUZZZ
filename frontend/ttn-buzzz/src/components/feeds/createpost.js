@@ -2,12 +2,18 @@ import React from "react";
 import "./createpost.css";
 
 const CreatePost = () => {
+
+
+  function handleCreatePost(e) {
+    e.preventDefault()
+    console.log(e);
+  }
   
     return (
       <div className="createpost-container">
         <div className="card createpost-card">
           <div className="row">
-            <form className="col form-div">
+            <form className="col form-div" onSubmit={(e) => handleCreatePost(e)}>
               <div className="createpost-heading">Create Post</div>
               <div className="createpost-textfield">
                 <div className="input-field">

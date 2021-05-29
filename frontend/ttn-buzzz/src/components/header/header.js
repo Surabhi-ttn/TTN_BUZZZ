@@ -19,8 +19,6 @@ class Header extends React.Component {
   }
 
   redirectToProfile(user_id) {
-    console.log(user_id)
-    console.log(this.props)
     this.props.history.push(`/viewprofile/${user_id}`)
   }
      
@@ -67,6 +65,11 @@ class Header extends React.Component {
       .then(response => response.json())
       .then(result => {
         this.props.updateProfile(result.data)
+        let newrequestlist = this.state.pendingRequestList.filter(request => request.user_id!=friend_id)
+        this.setState({
+          ...this.state,
+          pendingRequestList: newrequestlist
+        })
       })
       .catch(error => console.log('error', error));
     }

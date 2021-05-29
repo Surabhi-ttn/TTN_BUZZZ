@@ -20,7 +20,6 @@ class Feeds extends React.Component {
   }
 
   redirectToProfile(user_id) {
-    console.log(user_id)
      this.props.history.push(`/viewprofile/${user_id}`)
   }
 
@@ -50,10 +49,6 @@ class Feeds extends React.Component {
         this.props.updateProfile(result.data)
       })
       .catch(error => console.log('error', error));
-  }
-
-  handlePostLike () {
-    
   }
 
   componentDidMount() {
@@ -90,7 +85,6 @@ class Feeds extends React.Component {
         ...this.state,
         posts: result.posts
       })
-      console.log(this.state)
     })
       .catch(error => console.log('error', error));
 
