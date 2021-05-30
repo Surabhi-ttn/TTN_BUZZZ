@@ -18,13 +18,11 @@ async function getposts(user_id, cb) {
     return;
   }
   let posts = await postModel.find({})
-  console.log("post",posts)
   posts.forEach(post => {
-    if (user.friends.includes(post.user_id)) {
+    if (user.friends.includes(post.user_id) && post.status=="clean") {
       globalposts.push(post)
     }
   })
-  console.log("globalposts", globalposts)
     globalposts.sort(function(first, second) {
       if(first.created_at <= second.created_at) {
         return 1;

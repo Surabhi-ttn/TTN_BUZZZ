@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import cover from "./cover.jpeg";
 import profile from "./surabhi.jpg";
 import Header from '../header/header';
+import {Redirect} from 'react-router'
 
 class Profile extends Component {
   constructor() {
@@ -118,7 +119,7 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.profile || {}
+    user: state || {}
   }
 }
 

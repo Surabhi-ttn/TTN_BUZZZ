@@ -73,8 +73,6 @@ async function acceptrequest(user_id, friend_id, cb) {
       { friends: newfriendarray },
       function (err, data) {
         if (data) {
-          console.log(data);
-          //cb(data)
           userModel.findOne({ user_id: friend_id }, function (err, data) {
             if (err) throw err;
             let newfriendarray = data.friends;
@@ -117,21 +115,12 @@ function getpendingrequest(user_id, cb) {
   });
 }
 
-function contactlist(user_id, cb) {
-  userModel.find({ user_id: user_id }, function (err, data) {
-    if (data) {
-      data = data[0].friends;
-      data.forEach(contactlist => {
-        userModel.find({user_id:contactlist}, function(err, profile) {
-          if(profile) {
-            cb(profile)
-          }
-        })
-      })
-    } else {
-      cb(null);
-    }
-  });
+async function contactlist(user_id, cb) {
+  let result = [];
+  let user = await userModel.findOne({"user_id": user_id})
+  let allusers = await userModel.find()
+  result = allusers.filter(contactuser => user.friends.includes(contactuser.user_id))
+  cb(result);
 }
 
 async function suggestionlist(user_id, cb) {

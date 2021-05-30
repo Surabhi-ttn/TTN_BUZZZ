@@ -45,6 +45,10 @@ class Header extends React.Component {
       instance.open();
     }
 
+    redirectToProfile(user_id) {
+      this.props.history.push(`/viewprofile/${user_id}`)
+   }
+
     handleAcceptRequest (friend_id){
       
       var myHeaders = new Headers();
@@ -93,6 +97,11 @@ class Header extends React.Component {
       .then(response => response.json())
       .then(result => {
         this.props.updateProfile(result.data)
+        let newrequestlist = this.state.pendingRequestList.filter(request => request.user_id!=friend_id)
+        this.setState({
+          ...this.state,
+          pendingRequestList: newrequestlist
+        })
       })
       .catch(error => console.log('error', error));
     }
@@ -110,7 +119,7 @@ class Header extends React.Component {
                 <img src={this.props.user.profile_pic} className="header-profile circle" alt="logo" />
               </li>
               <li>
-                <span className="p-name">{this.props.user.first_name + " " + this.props.user.last_name}</span>
+                <span className="p-name" onClick={(e) => this.redirectToProfile(this.props.user.user_id)}>{this.props.user.first_name + " " + this.props.user.last_name}</span>
               </li>
               
               <li>
@@ -168,7 +177,7 @@ class Header extends React.Component {
 
   const mapStateToProps = (state) => {
     return {
-      user: state.profile || {}
+      user: state || {}
     }
   }
 

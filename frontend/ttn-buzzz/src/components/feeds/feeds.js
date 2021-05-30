@@ -9,6 +9,8 @@ import {updateProfile} from '../../actions/action'
 import Post from "./post";
 import M from 'materialize-css';
 import $ from 'jquery';
+import { Redirect } from "react-router";
+
 class Feeds extends React.Component {
   constructor () {
     super()
@@ -36,39 +38,59 @@ class Feeds extends React.Component {
     urlencoded.append("user_id", this.props.user.user_id);
     urlencoded.append("friend_id", friend_id);
 
-    var requestOptions = {
+    var friendrequestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: urlencoded,
       redirect: 'follow'
     };
 
-    fetch("http://localhost:9000/user/sendfriendrequest", requestOptions)
+    fetch("http://localhost:9000/user/sendfriendrequest", friendrequestOptions)
       .then(response => response.json())
       .then(result => {
         this.props.updateProfile(result.data)
+        let newsuggestionlist = this.state.suggestionlist.filter(request => request.user_id!=friend_id)
+        this.setState({
+          ...this.state,
+          suggestionlist: newsuggestionlist
+        })
       })
       .catch(error => console.log('error', error));
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    console.log(this.props.match.params.user_id)
     
-    var requestOptions = {
+    await fetch(`http://localhost:9000/user/showprofile?user_id=${this.props.match.params.user_id}`, {
       method: 'GET',
       redirect: 'follow'
-    };
-  //  console.log(this.props.user)
-  //   fetch(`http://localhost:9000/user/contactlist?user_id=${this.props.user.user_id}`, requestOptions)
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       this.setState({
-  //       ...this.state,
-  //       contactlist: result.contactlist
-  //     })
-  //   })
-  //     .catch(error => console.log('error', error));
+    })
+    .then(response => response.json())
+    .then(newprofile => {
+      this.props.updateProfile({
+        ...newprofile,
+        "user_id": this.props.match.params.user_id,
+      })
+    })
 
-      fetch(`http://localhost:9000/user/suggestionlist?user_id=${this.props.user.user_id}`, requestOptions)
+   console.log(this.props.user)
+    fetch(`http://localhost:9000/user/contactlist?user_id=${this.props.user.user_id}`, {
+      method: 'GET',
+      redirect: 'follow'
+    })
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+        ...this.state,
+        contactlist: result.contactlist
+      })
+    })
+      .catch(error => console.log('error', error));
+
+      fetch(`http://localhost:9000/user/suggestionlist?user_id=${this.props.user.user_id}`, {
+        method: 'GET',
+      redirect: 'follow'
+      })
       .then(response => response.json())
       .then(result => {
         this.setState({
@@ -78,7 +100,10 @@ class Feeds extends React.Component {
     })
       .catch(error => console.log('error', error));
 
-      fetch(`http://localhost:9000/post/getposts?user_id=${this.props.user.user_id}`, requestOptions)
+      fetch(`http://localhost:9000/post/getposts?user_id=${this.props.user.user_id}`, {
+        method: 'GET',
+      redirect: 'follow'
+      })
       .then(response => response.json())
       .then(result => {
         this.setState({
@@ -265,7 +290,7 @@ class Feeds extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.profile || {}
+    user: state || {}
   }
 }
 

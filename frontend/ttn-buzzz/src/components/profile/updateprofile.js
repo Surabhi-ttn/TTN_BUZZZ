@@ -323,7 +323,7 @@ class UpdateProfile extends React.Component {
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-   user: state.profile || {}
+   user: state || {}
   }
 
 }

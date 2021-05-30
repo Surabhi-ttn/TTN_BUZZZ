@@ -30,7 +30,6 @@ route.get('/getpost', (req, res) => {
 
 route.get('/getposts', (req, res) => {
     let {user_id} = req.query
-    console.log(user_id)
     getposts(user_id, function (posts) {
         if (!posts) {
             res.send({

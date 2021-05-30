@@ -121,7 +121,17 @@
     margin-top: 10px;
   }
 
-  /* .dropdown-content{
-    width: max-content !important;
-    height:auto !important;
- } */
+ .options {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .options .report-post {
+    visibility: hidden;
+    position: absolute;
+    top: 2px;
+  }
+  
+  .options:hover .report-post {
+    visibility: visible;
+  }

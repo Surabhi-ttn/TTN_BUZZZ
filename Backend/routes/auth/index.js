@@ -49,16 +49,16 @@ route.get(
   passport.authenticate("google", {
     failureRedirect: "localhost:9000/auth/login/" }),
   function (req, res) {
-    res.send({
-          "status": 200,
-          "message": "successful login",
-          "profile": req.user
-        })
+    res.redirect(`http://localhost:3000/feeds/${req.user.user_id}`)
+    // res.send({
+    //       "status": 200,
+    //       "message": "successful login",
+    //       "profile": req.user
+    //     })
   }
 );
 
 route.get('/current_user',(req,res) => {
-  console.log(req.user)
   res.send(req.user)
 })
 

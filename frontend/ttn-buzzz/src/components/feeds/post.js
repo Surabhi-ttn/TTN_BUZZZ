@@ -10,6 +10,7 @@ class Post extends React.Component{
     super()
     this.state = {
       likedpost : [],
+      dislikedpost : []
     }
   }
   
@@ -40,6 +41,32 @@ class Post extends React.Component{
       .catch(error => console.log('error', error));
   }
 
+  handlePostDislike (post_id) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("post_id", post_id);
+    urlencoded.append("user_id", this.props.user.user_id);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:9000/reaction/dislike", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          ...this.state,
+          dislikedpost: [result.data]
+        })
+      })
+      .catch(error => console.log('error', error));
+  }
+
   handlePostComment(post_id, comment) {
     console.log(post_id, comment)
     var myHeaders = new Headers();
@@ -65,6 +92,30 @@ class Post extends React.Component{
       .catch(error => console.log('error', error));
   }
 
+  handleReportPost (post_id) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("post_id", post_id);
+    urlencoded.append("status", "flagged");
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:9000/post/reportpost", requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result.message)
+        M.toast({html: 'Post is marked as reported'})
+      })
+      .catch(error => console.log('error', error));
+  }
+
     render() {
     return (
         this.props.posts.map(post => {
@@ -80,7 +131,9 @@ class Post extends React.Component{
                    <div> name</div>
                   <div>{post.created_at}</div>
                 </div>
-                <i class="fas fa-ellipsis-h" ></i>
+                <i className="fas fa-ellipsis-h options" onClick={(e) => this.handleReportPost(post._id)}>
+                  <p className="report-post">Report</p>
+                </i>
                       
             </div>
             <div className="post-caption">
@@ -102,10 +155,10 @@ class Post extends React.Component{
             </div>
             <div className="post-reactions">
                 <div className="like" onClick={(e) => this.handlePostLike(post._id)}>
-                <i class="far fa-thumbs-up"></i>Like
+                <i class="far fa-thumbs-up like-icon"></i>Like
                 </div>
-                <div className="dislike"> 
-                <i class="far fa-thumbs-down"></i>Dislike
+                <div className="dislike" onClick={(e) => this.handlePostDislike(post._id)}> 
+                <i class="far fa-thumbs-down dislike-icon"></i>Dislike
                 </div>
                 <div className="comment">
                 <i class="far fa-comment-alt"></i>Comment
@@ -123,9 +176,9 @@ class Post extends React.Component{
             className="materialize-textarea"
           ></textarea>
           <label for="textarea">Write a Comment...</label>
-          <button onClick={(e) => this.handlePostComment(post._id, this.refs.postcomment.value)}>send</button>
+          
         </div>
-      
+        <a className="btn comment-btn" onClick={(e) => this.handlePostComment(post._id, this.refs.postcomment.value)}>send</a>
         </div>
             </div>
           )
@@ -137,7 +190,7 @@ class Post extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    user: state.profile || {}
+    user: state || {}
   }
 }
 

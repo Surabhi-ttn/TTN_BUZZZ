@@ -11,7 +11,7 @@ function App(props) {
   return (
    <BrowserRouter>
      <Switch>
-        <Route exact path='/' component={Feeds}></Route>
+        <Route exact path='/feeds/:user_id' component={Feeds}></Route>
         <Route exact path='/login' component={Login}></Route>
         <Route exact path='/viewprofile/:user_id' component={Profile}></Route>
         <Route exact path='/updateprofile' component={UpdateProfile}></Route>
