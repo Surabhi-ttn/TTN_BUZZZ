@@ -37,6 +37,7 @@
     border-radius: 10px;
     text-align: center;
     font-size: medium;
+    cursor: pointer;
 }
 
 .createpost-textfield {

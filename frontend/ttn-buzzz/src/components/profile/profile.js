@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./profile.css";
 import { connect } from 'react-redux';
 import cover from "./cover.jpeg";
-import profile from "./surabhi.jpg";
 import Header from '../header/header';
 import {Redirect} from 'react-router'
 

@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../auth/logo.jpeg";
-import profile from "../profile/surabhi.jpg";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
@@ -21,23 +20,27 @@ class Header extends React.Component {
   redirectToProfile(user_id) {
     this.props.history.push(`/viewprofile/${user_id}`)
   }
+
+  handlependingrequestlist() {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch(`http://localhost:9000/user/getpendingrequest?user_id=${this.props.user.user_id}`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+        this.setState({
+        ...this.state,
+        pendingRequestList: result.pendingfriendrequest
+      })
+    })
+      .catch(error => console.log('error', error));
+  }
      
     componentDidMount() {
-      var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
       
-      fetch(`http://localhost:9000/user/getpendingrequest?user_id=${this.props.user.user_id}`, requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          console.log(result)
-          this.setState({
-          ...this.state,
-          pendingRequestList: result.pendingfriendrequest
-        })
-      })
-        .catch(error => console.log('error', error));
     }
 
     toggleModal () {
@@ -46,7 +49,7 @@ class Header extends React.Component {
     }
 
     redirectToProfile(user_id) {
-      this.props.history.push(`/viewprofile/${user_id}`)
+      this.props.history.push('/updateprofile')
    }
 
     handleAcceptRequest (friend_id){
@@ -128,7 +131,7 @@ class Header extends React.Component {
                 </a>
               </li>
               <li>
-                <a href="#" onClick={this.toggleModal}>
+                <a href="#" onClick={(e) => {this.handlependingrequestlist(); this.toggleModal()}}>
                   <i className="material-icons circle notification-icon">person</i>
                 </a>
                 <div id="modal1" class="modal request-modal">

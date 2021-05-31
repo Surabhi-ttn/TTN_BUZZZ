@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {updateProfile} from '../../actions/action'
 import "./updateprofile.css";
 import cover from "./cover.jpeg";
-import profile from "./surabhi.jpg";
 import Header from "../header/header";
 
 class UpdateProfile extends React.Component {
@@ -150,7 +149,7 @@ class UpdateProfile extends React.Component {
                 <div className="update-cover-pic">
                   <img id="update-pic1" src={cover} alt="cover pic" />
                   <div className="update-profile-pic">
-                    <img id="update-pic2" src={profile} alt="profile pic" />
+                    <img id="update-pic2" src={this.state.profile_pic} alt="profile pic" />
                     <div className="edit-profile circle">
                       <i className="material-icons e-profile">add_a_photo</i>
                     </div>

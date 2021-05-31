@@ -2,7 +2,6 @@ import React from "react";
 import "./feeds.css";
 import { connect } from 'react-redux';
 import banner from "./bg.jpg";
-import profile from "../profile/surabhi.jpg";
 import Header from "../header/header";
 import CreatePost from './createpost';
 import {updateProfile} from '../../actions/action'
@@ -138,7 +137,7 @@ class Feeds extends React.Component {
                 </div>
                 <div className="row profile-description">
                   <div className="col des">{(this.props.user.friends? this.props.user.friends.length:0)} Friends</div>
-                  <div className="col">{this.props.user.post_count} Posts</div>
+                  <div className="col">{(this.props.user.post_count? this.props.user.post_count:0)} Posts</div>
                 </div>
               </div>
             </div>
@@ -269,7 +268,7 @@ class Feeds extends React.Component {
                     </div>
                     <div className="s-name" onClick={(e) => this.redirectToProfile(user.user_id)}>{user.first_name + " " + user.last_name}</div>
                     <div className="add">
-                      <a className="add-friend" href="#" onClick={(e) => this.handleSendFriendRequest(user.user_id)}>
+                      <a className="add-friend" onClick={(e) => this.handleSendFriendRequest(user.user_id)}>
                         +Friend
                       </a>
                     </div>
