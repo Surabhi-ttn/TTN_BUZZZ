@@ -13,13 +13,18 @@ function getpost(post_id, cb) {
 async function getposts(user_id, cb) {
   let globalposts = []
   let user = await userModel.findOne({"user_id": user_id})
+  let allusers = await userModel.find({});
   if(!user) {
     cb(globalposts);
     return;
   }
   let posts = await postModel.find({})
   posts.forEach(post => {
+    post = post.toObject()
     if (user.friends.includes(post.user_id) && post.status=="clean") {
+      let postowner = allusers.filter(user => user.user_id == post.user_id)[0]
+      post["user"] = postowner 
+      console.log(post)
       globalposts.push(post)
     }
   })

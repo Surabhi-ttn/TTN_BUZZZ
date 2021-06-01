@@ -77,14 +77,13 @@ class Post extends React.Component{
     urlencoded.append("user_id", this.props.user.user_id);
     urlencoded.append("comment_description", comment);
 
-    var requestOptions = {
+    fetch("http://localhost:9000/reaction/comment", 
+    {
       method: 'POST',
       headers: myHeaders,
       body: urlencoded,
       redirect: 'follow'
-    };
-
-    fetch("http://localhost:9000/reaction/comment", requestOptions)
+    })
       .then(response => response.json())
       .then(result => {
         console.log(result.message);
@@ -125,10 +124,10 @@ class Post extends React.Component{
             <div className="card card-div">
             <div className="post-detail">
                 <div className="post-user">
-                <img src={profile} className="circle picture" alt="profile" />
+                <img src={post.user.profile_pic} className="circle picture" alt="profile" />
                 </div>
                 <div className="details">
-                   <div> name</div>
+                   <div>{post.user.first_name+ " "+ post.user.last_name}</div>
                   <div>{post.created_at}</div>
                 </div>
                 <i className="fas fa-ellipsis-h options" onClick={(e) => this.handleReportPost(post._id)}>
@@ -166,7 +165,7 @@ class Post extends React.Component{
             </div>
             <div className="post-comment">
             <div className="profile-img">
-          <img src={profile} className="circle picture" alt="profile" />
+          <img src={this.props.user.profile_pic} className="circle picture" alt="profile" />
         </div>
         
         <div className="input-field comment-area">
